@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPPlueSample", "EPPlueSample.csproj", "{88BA369A-CC58-40E7-99FA-C526EACF866F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88BA369A-CC58-40E7-99FA-C526EACF866F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BA369A-CC58-40E7-99FA-C526EACF866F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BA369A-CC58-40E7-99FA-C526EACF866F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BA369A-CC58-40E7-99FA-C526EACF866F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA896931-1906-4634-9F6A-F0C64F2590F3}
+	EndGlobalSection
+EndGlobal
