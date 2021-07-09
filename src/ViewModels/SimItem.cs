@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPPlueSample
+namespace SmartMade.ViewModels
 {
     public class SimItem
     {

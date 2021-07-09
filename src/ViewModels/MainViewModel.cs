@@ -6,7 +6,7 @@ using Microsoft.Win32;
 using OfficeOpenXml;
 using ReactiveUI;
 
-namespace EPPlueSample
+namespace SmartMade.ViewModels
 {
     public class MainViewModel : ReactiveObject
     {
