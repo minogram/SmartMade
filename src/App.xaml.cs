@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ActiproSoftware.Products;
+using ActiproSoftware.Windows.Themes;
 using OfficeOpenXml;
 
 namespace EPPlueSample
@@ -16,7 +18,40 @@ namespace EPPlueSample
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            RegisterLicense();
+            InitializeActiproThemes();
         }
+
+        #region Actipro
+        private static void RegisterLicense()
+        {
+            // EPPlus
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            // Actipro 
+            var licensee = "Youth Hitech Co. Ltd.";
+            var licenseKey = "WPF211-826CW-G5J7Y-JG4WV-GFCG";
+            ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
+        }
+
+        private static void InitializeActiproThemes()
+        {
+            try
+            {
+                ThemeManager.BeginUpdate();
+                ThemeManager.AreNativeThemesEnabled = true;
+                ThemeManager.RegisterAutomaticThemes(ThemeNames.Light, ThemeNames.Dark, ThemeNames.HighContrast);
+                ThemeManager.CurrentTheme = ThemeNames.Dark;
+                //ThemeManager.RegisterAutomaticThemes(ThemeNames.MetroWhite, ThemeNames.MetroDark, ThemeNames.HighContrast);
+                //ThemeManager.CurrentTheme = ThemeNames.White;
+                //ThemeManager.CurrentTheme = ThemeNames.Dark;
+                //ThemeManager.CurrentTheme = ThemeNames.Black; 
+            }
+            finally
+            {
+                ThemeManager.EndUpdate();
+            }
+        }
+        #endregion
     }
 }

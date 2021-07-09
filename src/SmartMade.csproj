@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ActiproSoftware.Controls.WPF" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.Editors.Interop.DataGrid" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="21.1.1" />
     <PackageReference Include="EPPlus" Version="5.7.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
     <PackageReference Include="ReactiveUI" Version="14.1.1" />
     <PackageReference Include="ReactiveUI.Fody" Version="14.1.1" />
     <PackageReference Include="ReactiveUI.WPF" Version="14.1.1" />

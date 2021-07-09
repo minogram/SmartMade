@@ -9,6 +9,7 @@ namespace SmartMade.ViewModels
 {
     public class SimItem
     {
+        public int Seq { get; set; }
         [DisplayName("작업자명")]
         public string WorkerName { get; set; }
         [DisplayName("작업자ID")]
@@ -26,9 +27,11 @@ namespace SmartMade.ViewModels
         [DisplayName("프로세스이름")]
         public string ProcessName { get; set; }
         [DisplayName("시작시간")]
-        public string StartTime { get; set; }
+        public DateTime StartTime { get; set; }
         [DisplayName("종료시간")]
-        public string EndTime { get; set; }
+        public DateTime EndTime { get; set; }
+        [DisplayName("소요시간")]
+        public TimeSpan ElapsedTime => EndTime - StartTime;
         [DisplayName("장비ID")]
         public string EquipmentID { get; set; }
         [DisplayName("장비이름")]

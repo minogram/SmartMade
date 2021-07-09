@@ -1,22 +1,73 @@
-﻿<Window x:Class="SmartMade.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EPPlueSample"
-        xmlns:vm="clr-namespace:SmartMade.ViewModels"
-        mc:Ignorable="d"
-        Title="SmartMade Sewing Simluation" Height="450" Width="800">
+﻿<Window
+    x:Class="SmartMade.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:datagrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
+    xmlns:local="clr-namespace:EPPlueSample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:vm="clr-namespace:SmartMade.ViewModels"
+    xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+    Title="SmartMade Sewing Simluation"
+    xmlns:v="clr-namespace:SmartMade.Views"
+    ResizeMode="CanResizeWithGrip"
+    MinWidth="800"
+    MinHeight="600"
+    Width="800"
+    Height="450"
+    themes:WindowChrome.Chrome="{StaticResource WindowChrome}"
+    mc:Ignorable="d">
     <Window.DataContext>
         <vm:MainViewModel x:Name="ViewModel" />
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding OpenCommand}" Gesture="Ctrl+O" />
+    </Window.InputBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open" Command="{Binding OpenCommand}" />
+                <MenuItem Command="{Binding OpenCommand}" Header="_Open" InputGestureText="Ctrl+O" />
+                <Separator />
+                <MenuItem Command="{Binding CloseCommand}" Header="_Close" />
             </MenuItem>
         </Menu>
-        <DataGrid ItemsSource="{Binding Items}">
-        </DataGrid>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="{Binding FilePath}" />
+            </StatusBarItem>
+        </StatusBar>
+        <docking:DockSite x:Name="dockSite" ToolWindowsHaveTabImages="True">
+            <docking:SplitContainer>
+                <docking:Workspace>
+                    <datagrid:ThemedDataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Items}">
+                        <datagrid:ThemedDataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Seq}" Header="SEQ" />
+                            <DataGridTextColumn Binding="{Binding WorkerID}" Header="WORKER" />
+                            <DataGridTextColumn Binding="{Binding WorkerName}" Header="" />
+                            <DataGridTextColumn Binding="{Binding OrderID}" Header="ORDER" />
+                            <DataGridTextColumn Binding="{Binding OrderName}" Header="" />
+                            <DataGridTextColumn Binding="{Binding ItemID}" Header="ITEM" />
+                            <DataGridTextColumn Binding="{Binding ItemName}" Header="" />
+                            <DataGridTextColumn Binding="{Binding ProcessID}" Header="PROCESS" />
+                            <DataGridTextColumn Binding="{Binding ProcessName}" Header="" />
+                            <DataGridTextColumn Binding="{Binding StartTime, StringFormat='yyyy-MM-dd HH:MM:ss'}" Header="START" />
+                            <DataGridTextColumn Binding="{Binding EndTime, StringFormat='yyyy-MM-dd HH:MM:ss'}" Header="END" />
+                            <DataGridTextColumn Binding="{Binding ElapsedTime, StringFormat='ss'}" Header="ELAPSED" />
+                            <DataGridTextColumn Binding="{Binding EquipmentID}" Header="EQUIP" />
+                            <DataGridTextColumn Binding="{Binding EquipmentName}" Header="" />
+                            <DataGridTextColumn Binding="{Binding ProcessKind}" Header="PROCESS KIND" />
+                            <DataGridTextColumn Binding="{Binding DivideKind}" Header="DIVIDE KIND" />
+                            <DataGridTextColumn Binding="{Binding Remark}" Header="REMARK" />
+                        </datagrid:ThemedDataGrid.Columns>
+                    </datagrid:ThemedDataGrid>
+                </docking:Workspace>
+                <docking:ToolWindowContainer>
+                    <docking:ToolWindow Title="Summary" x:Name="summaryToolWindow">
+                        <v:SummaryControl />
+                    </docking:ToolWindow>
+                </docking:ToolWindowContainer>
+            </docking:SplitContainer>
+        </docking:DockSite>
     </DockPanel>
 </Window>
